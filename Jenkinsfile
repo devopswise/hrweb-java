@@ -1,4 +1,4 @@
-node('jenkins-python-slave'){
+node('cdt-jenkins-java-slave'){
    stage 'checkout'
 
    // Checkout code
