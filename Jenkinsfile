@@ -2,7 +2,7 @@ node('cdt-jenkins-java-slave'){
    stage 'checkout'
 
    // Checkout code
-   git url: 'https://github.com/ozkolonur/hrweb-java'
+   //git url: 'https://github.com/ozkolonur/hrweb-java'
 
    checkout scm
    
