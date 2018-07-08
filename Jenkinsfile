@@ -9,8 +9,8 @@ node('cdt-jenkins-java-slave'){
 
    stage 'build'
    // get Maven
-   sh "${mvnHome}/bin/mvn versions:set -DnewVersion=${env.BUILD_NUMBER}"
-   sh "${mvnHome}/bin/mvn package"
+   sh "${mvnHome}/bin/mvn -B versions:set -DnewVersion=${env.BUILD_NUMBER}"
+   sh "${mvnHome}/bin/mvn -B package"
 
    stage 'test'
    sh "echo testing"
