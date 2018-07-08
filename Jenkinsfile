@@ -1,4 +1,7 @@
 node('cdt-jenkins-java-slave'){
+pipeline {
+    agent { label 'cdt-jenkins-java-slave' }
+    
     stages {
         stage ('Checkout') {
             steps {
