@@ -4,6 +4,8 @@ node('cdt-jenkins-java-slave'){
    // Checkout code
    git url: 'https://github.com/ozkolonur/hrweb-java'
 
+   checkout scm
+   
    // Get the maven
    def mvnHome = tool 'mvn'
 
