@@ -9,9 +9,8 @@ pipeline {
         }
        
        stage ('Build') {
-          def mvnHome = tool 'mvn'
           steps {
-             sh "${mvnHome}/bin/mvn -B clean package"
+             sh "mvn -B clean package"
           }
        }
 
