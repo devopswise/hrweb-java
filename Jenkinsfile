@@ -10,7 +10,7 @@ pipeline {
        
        stage ('Build') {
           steps {
-             sh "mvn -B clean package"
+             sh "/home/user/apache-maven-3.3.9/bin/mvn -B clean package"
           }
        }
 
