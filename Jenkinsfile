@@ -58,3 +58,4 @@ pipeline {
    // Checkout code
    //git url: 'https://github.com/ozkolonur/hrweb-java'
 }
+}
