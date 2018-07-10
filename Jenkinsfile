@@ -28,6 +28,7 @@ pipeline {
        
        stage ('package') {
           steps {
+              sh 'docker logout'
             withDockerRegistry([ credentialsId: "devopswise-dockerhub", url: "" ]) {
               sh 'docker build -f Dockerfile -t devopswise/hrweb-java:latest .'
               sh 'docker push devopswise/hrweb-java:latest'
