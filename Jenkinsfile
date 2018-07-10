@@ -31,9 +31,7 @@ pipeline {
             withDockerRegistry([ credentialsId: "devopswise-dockerhub", url: "" ]) {
               sh 'docker build -f Dockerfile -t devopswise/hrweb-java:latest .'
               sh 'docker push devopswise/hrweb-java:latest'
-            }
-              
-            script {
+            }              
                 def tag = 'latest'
                 if ( "${env.BRANCH_NAME}" == "master") {
                     withCredentials([string(credentialsId: 'devopswise-github', variable: 'GITHUB_PASSWORD')]) {
@@ -45,7 +43,6 @@ pipeline {
                         sh("git push https://${user_name}:${env.GITHUB_PASSWORD}@${repo_url} --tags") 
                     }
                 }
-            }
        }
 
        stage ('verification') {
@@ -57,5 +54,4 @@ pipeline {
     }
    // Checkout code
    //git url: 'https://github.com/ozkolonur/hrweb-java'
-}
 }
