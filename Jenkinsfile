@@ -29,11 +29,7 @@ pipeline {
        stage ('package') {
           steps {
             // why not use withRegistry? https://issues.jenkins-ci.org/browse/JENKINS-41051  
-            withCredentials([usernamePassword( credentialsId: 'devopswise-dockerhub', 
-                                              usernameVariable: 'DOCKERHUB_USERNAME', 
-                                              passwordVariable: 'DOCKERHUB_PASSWORD')]) {
-              sh 'docker --version'
-              sh "echo ${DOCKERHUB_PASSWORD} | docker login -u ${DOCKERHUB_USERNAME} --password-stdin"  
+            withDockerRegistry([ credentialsId: "devopswise-dockerhub", url: "" ]) {
               sh 'docker build -f Dockerfile -t devopswise/hrweb-java:latest .'
               sh 'docker push devopswise/hrweb-java:latest'
             }
