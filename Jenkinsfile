@@ -32,6 +32,7 @@ pipeline {
             withCredentials([usernamePassword( credentialsId: 'devopswise-dockerhub', 
                                               usernameVariable: 'DOCKERHUB_USERNAME', 
                                               passwordVariable: 'DOCKERHUB_PASSWORD')]) {
+              sh 'echo new version'
               sh "docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}"  
               sh 'docker build -f Dockerfile -t devopswise/hrweb-java:latest .'
               sh 'docker push devopswise/hrweb-java:latest'
