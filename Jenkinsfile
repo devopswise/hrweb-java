@@ -37,7 +37,7 @@ pipeline {
               def tag = 'latest'
               if ( "${env.BRANCH_NAME}" == "master") {
                 withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'devopswise-github',
-                    usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']])
+                                  usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]){
                 //withCredentials([string(credentialsId: 'devopswise-github', variable: 'GITHUB_PASSWORD')]) {
                   def repo_url = "github.com/devopswise/hrweb-java.git"
                   def user_name = "devopswise"
