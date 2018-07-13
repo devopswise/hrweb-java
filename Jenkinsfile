@@ -36,13 +36,15 @@ pipeline {
             script {  
               def tag = 'latest'
               if ( "${env.BRANCH_NAME}" == "master") {
-                withCredentials([string(credentialsId: 'devopswise-github', variable: 'GITHUB_PASSWORD')]) {
+                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'devopswise-github',
+                    usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']])
+                //withCredentials([string(credentialsId: 'devopswise-github', variable: 'GITHUB_PASSWORD')]) {
                   def repo_url = "github.com/devopswise/hrweb-java.git"
                   def user_name = "devopswise"
                   sh("git config user.name 'Onur'")
                   sh("git config user.email 'onur@devopswise.co.uk'")
                   sh("git tag -a ${tag} -m ${tag} ") 
-                  sh("git push https://${user_name}:${env.GITHUB_PASSWORD}@${repo_url} --tags") 
+                  sh("git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@${repo_url} --tags") 
                 }
             }
           }
