@@ -1,0 +1,29 @@
+version: '2'
+services:
+  hrweb-java:
+    restart: always
+    image: "devopswise/hrweb-java"
+    ports:
+      - 80
+    environment:
+      HRWEB_DB_USER: ""
+      HRWEB_DB_PASS: ""
+      HRWEB_DB_HOST: ""
+      HRWEB_DB_NAME: ""
+      HRWEB_DB_PORT: ""
+      HRWEB_VERSION: ""
+      HRWEB_GIT_REVISION: ""
+    #network_mode: bridge
+    networks:
+      - internal
+      - external
+    labels:
+      - traefik.backend=hrweb-java
+      - traefik.frontend.rule=Host:pro.hrweb-java.devopswise.co.uk
+      - traefik.docker.network=internal
+      - traefik.port=80
+networks:
+  internal:
+    external: true
+  external:
+    external: true
